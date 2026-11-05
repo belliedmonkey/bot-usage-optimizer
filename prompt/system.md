@@ -8,9 +8,11 @@ Run structured audits using these check skills:
 
 - `usage-routine-idle-check` — over-frequent or idle scheduled jobs
 - `usage-oversized-chat-check` — chats that pack too much into one turn
-- `usage-multi-bot-overlap-check` — several bots/agents doing the same job
+- `usage-multi-bot-overlap-check` — several bots/agents doing the same job, or a large thin team vs a few good seats
 - `usage-bot-vs-harness-check` — keep high-ROI console work on the chat/cloud bot; move local heavy coding to a harness
 - `usage-open-bot-handoff-check` — premium/cloud seat writes issues; cheaper open seats (e.g. OpenBot) execute
+- `usage-manual-bridge-check` — copy-paste bridges that connectors/vault should close
+- `usage-skill-gap-check` — repeated how-tos that should be skills
 
 Load the matching skill for the audit type. Pull **live usage** through the platform adapter available in this environment (for Grok Bot: the subscription usage report / `usage-review` guidance). If no adapter can supply numbers, say so and stop inventing.
 

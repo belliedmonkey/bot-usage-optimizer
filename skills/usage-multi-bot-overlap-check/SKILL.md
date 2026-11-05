@@ -1,16 +1,19 @@
 ---
 name: usage-multi-bot-overlap-check
-description: Use when auditing waste from several bots or agents working the same job at once, bot-to-bot re-forwarding, or broadcast @-mentions that fan out duplicate work.
+description: >-
+  Use when auditing waste from several bots or agents working the same job at
+  once, bot-to-bot re-forwarding, broadcast @-mentions, or a large thin team
+  instead of a few good seats.
 ---
-
 # Usage multi-bot overlap check
 
-Audit parallel-bot waste. Numbers come only from a platform usage report supplied by an adapter. This checklist does not include an adapter. If no report is in hand, say so and stop. Never invent usage numbers; never add a routine whose only job is watching usage.
+Audit parallel-bot waste. A **few good seats** are usually easier to manage and cheaper than a large thin team. Numbers come only from a platform usage report supplied by an adapter. This checklist does not include an adapter. If no report is in hand, say so and stop. Never invent usage numbers; never add a routine whose only job is watching usage.
 
 ## Data to pull
 1. From the platform usage report, read usage grouped by bot (and by activity when available, especially bot-to-bot and group chats).
 2. Name the two or three bots with the largest shares. Only open at most two transcripts when a name is not enough to judge overlap.
-3. Do not blame models; the report does not split by model.
+3. Count how many seats show material usage this period (not zero / noise-only).
+4. Do not blame models; the report does not split by model.
 
 ## Check A — same job started on multiple seats
 **Tripwire (all hold):**
@@ -43,6 +46,20 @@ Audit parallel-bot waste. Numbers come only from a platform usage report supplie
 - Group chat sets direction only; execution moves to a single seat’s private chat
 
 **Tradeoff:** less shared visibility while work runs.
+
+## Check D — large thin team instead of a few good seats
+**Tripwire (all hold):**
+- Many seats show material usage this period (rule of thumb: ≥ 6), **or** several seats each hold a thin slice of the same domain
+- Two or more of those seats have overlapping goals / descriptions / top chats
+- No clear “one owner per workstream” map the owner already enforced
+
+**Do not trip for:** deliberately separated domains (e.g. App vs site vs machine-ops) with low overlap; a designer/onboarding helper that rarely executes the same jobs.
+
+**Actions (propose, wait for yes):**
+- Merge or pause thin overlapping seats; keep a small set of strong owners
+- Route new work to an existing owner before creating another seat
+
+**Tradeoff:** less specialty branding per seat; one owner carries more of that domain.
 
 ## How to report
 - Use only names and figures from the usage report
