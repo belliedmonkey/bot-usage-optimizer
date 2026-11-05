@@ -53,3 +53,5 @@ Numbers come only from a platform usage report supplied by an adapter. This chec
 
 ## Report shape
 Lead with PASS/FAIL per check that had enough evidence. At most one action per check. Say what they give up. Change nothing until the owner says yes.
+
+For handoff to cheaper open seats via issues, also load [usage-open-bot-handoff-check](sand-workflow:usage-open-bot-handoff-check).
