@@ -1,11 +1,12 @@
 ---
 name: usage-routine-idle-check
-description: Use when auditing scheduled routines for over-frequency or idle polling: stale daily runs with little change, or cron used where an event trigger fits.
+description: >-
+  Use when auditing scheduled or event routines for over-frequency, idle
+  polling, unfiltered subscriptions, or cron used where an event trigger fits.
 ---
-
 # Usage routine idle check
 
-Audit scheduled routines for waste. Numbers come only from a platform usage report supplied by an adapter. This checklist does not include an adapter. If no report is in hand, say so and stop. Never invent usage numbers; never add a routine whose only job is watching usage.
+Audit scheduled and subscription routines for waste. Prefer proactive routines, but **frequency and filters** matter: scheduled ones should rarely fire more often than hourly; subscription/event ones should filter first. Numbers come only from a platform usage report supplied by an adapter. This checklist does not include an adapter. If no report is in hand, say so and stop. Never invent usage numbers; never add a routine whose only job is watching usage.
 
 ## Data to pull
 1. From the platform usage report, read usage grouped by bot and routine (current week). If shares look empty right after reset, use the last 7 days window the same way.
@@ -39,6 +40,31 @@ Audit scheduled routines for waste. Numbers come only from a platform usage repo
 - Not connected yet → cut to ≤ 2–3 runs per week and name the connector gap; do not pretend the trigger is done
 
 **Tradeoff:** short setup; the app must be connected for a full switch.
+
+## Check C — scheduled cadence hotter than needed
+**Tripwire (any holds):**
+- A scheduled/cron routine fires more often than **hourly** (e.g. every 5–30 minutes) without an on-call disposition need
+- Or about-weekly run count is extreme for a digests/watch job that could be hourly or less
+
+**Do not trip for:** true on-call / live-meeting jobs the owner named as time-critical.
+
+**Actions (propose, wait for yes):**
+- Cap scheduled routines at ≤ hourly unless the owner explicitly needs hotter
+- Prefer event/subscription triggers over hot cron when the platform allows
+
+**Tradeoff:** slightly slower awareness between events.
+
+## Check D — subscription / event routine without a filter
+**Tripwire (all hold):**
+- The routine is event- or subscription-driven (email, Slack, GitHub, webhook, and similar)
+- It fires on a broad stream (all mail, all channel messages, all repo events) with little or no filter in the trigger or prompt
+- Recent runs show high idle or low-value volume relative to useful actions
+
+**Actions (propose, wait for yes):**
+- Narrow the trigger (sender, label, repo, event type, channel) before keeping the subscription
+- Keep “summarize and file” jobs only on the filtered subset
+
+**Tradeoff:** might miss edge events outside the filter—widen only with evidence.
 
 ## How to report
 - Use only names and figures from the usage report
