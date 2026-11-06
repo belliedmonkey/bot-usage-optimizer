@@ -96,9 +96,12 @@ OpenBot.app 0.62.0 has a read-only Usage page:
 
 ### 3. Agent tool
 
-No built-in `usage.getUsage`, `usage.listUsageEvents`, or `usage.getCredits` tool was verified
-in the 0.62.0 app. Do not tell a bot to call one unless the host has installed and tested such
-a tool. The documented read path is the HTTP API; the desktop page is a human-facing read.
+No built-in `usage.getUsage`, `usage.listUsageEvents`, or `usage.getCredits` tool was verified.
+The official "OpenBot gives every Bot these tools" list covers bot listing, bot details,
+delegation, delegation cancellation, and bot creation; it has no usage tool. The 0.62.0 app's
+tool strings showed no usage tool either. Do not tell a bot to call one unless the host has
+installed and tested such a tool. The documented read path is the HTTP API; the desktop page is
+a human-facing read.
 
 ## Periods and time zones
 
@@ -166,7 +169,7 @@ For the desktop page, the agent breakdown is a host-side agent label, not necess
   `OPENBOT_TOKEN` or verified organization-admin session was present, and the desktop page is
   local host analytics rather than the organization API. A working desktop page does not prove
   that `Usage.read` is available on the server.
-- No built-in usage agent tool was found in the 0.62.0 app.
+- No built-in usage agent tool was found in the official every-Bot tool list or the 0.62.0 app.
 
 ## Official links
 
@@ -175,3 +178,4 @@ For the desktop page, the agent breakdown is a host-side agent label, not necess
 - <https://docs.openbot.build/api/operations/usagelistusageevents/>
 - <https://docs.openbot.build/api/operations/usagegetcredits/>
 - <https://docs.openbot.build/api/operations/budgetsgetbudget/>
+- <https://docs.openbot.build/delegation/>
