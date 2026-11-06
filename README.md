@@ -4,7 +4,7 @@ A **general checker** for agent/bot products: Grok Bot and common open-source bo
 
 ## Positioning
 
-- **Product-neutral tripwires** — idle/over-polled routines, oversized chats, multi-bot overlap, bot vs local harness, open-bot issue handoff, skill gaps, paste bridges, script vs chat (incl. lightest supported tool), failure retry limits
+- **Product-neutral tripwires** — idle/over-polled routines and routine isolation from an all-day chat seat, oversized chats and long-chat duplicate/reset, multi-bot overlap, bot vs local harness, open-bot issue handoff, skill gaps, paste bridges, script vs chat (incl. lightest supported tool), failure retry limits
 - **On-demand visibility** — presentation capability for usage by bot and activity; high usage alone does not prove waste; **no usage-dashboard polling**
 - **Optional memory slimming** — maintenance capability, **default OFF**; schedule enablement and memory-deletion permission are separate; not a waste tripwire; not usage polling
 - **Optimization impact report** — presentation capability, not a waste check: intervention ledger + observed usage change; **never invent token/cost savings**; default no polling; optional daily snapshot is **OFF**
@@ -13,8 +13,8 @@ A **general checker** for agent/bot products: Grok Bot and common open-source bo
 
 ## Checks (9 tripwires)
 
-1. Idle / over-polled / unfiltered routines — `skills/usage-routine-idle-check`
-2. Oversized single chats — `skills/usage-oversized-chat-check`
+1. Idle / over-polled / unfiltered routines, or routines sharing a bot with all-day chat (isolate routines; no duplicate chatting specialist) — `skills/usage-routine-idle-check`
+2. Oversized single chats, or a long chat that never resets (move durable state out, then duplicate/fresh chat that keeps profile, skills, and routines) — `skills/usage-oversized-chat-check`
 3. Multi-bot / multi-agent overlap (incl. few good seats) — `skills/usage-multi-bot-overlap-check`
 4. Bot vs local harness — `skills/usage-bot-vs-harness-check`
 5. Open-bot issue handoff — `skills/usage-open-bot-handoff-check`

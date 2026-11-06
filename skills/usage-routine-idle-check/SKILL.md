@@ -2,16 +2,18 @@
 name: usage-routine-idle-check
 description: >-
   Use when auditing scheduled or event routines for over-frequency, idle
-  polling, unfiltered subscriptions, or cron used where an event trigger fits.
+  polling, unfiltered subscriptions, cron used where an event trigger fits, or
+  routines living on a bot the owner chats with all day.
 ---
 # Usage routine idle check
 
-Audit scheduled and subscription routines for waste. Prefer proactive routines, but **frequency and filters** matter: scheduled ones should rarely fire more often than hourly; subscription/event ones should filter first. Numbers come only from a platform usage report supplied by an adapter. This checklist does not include an adapter. If no report is in hand, say so and stop. Never invent usage numbers; never add a routine whose only job is watching usage.
+Audit scheduled and subscription routines for waste. Prefer proactive routines, but **frequency and filters** matter: scheduled ones should rarely fire more often than hourly; subscription/event ones should filter first. Also watch whether recurring routines live on a bot the owner chats with all day — each run rereads that conversation. Numbers come only from a platform usage report supplied by an adapter. This checklist does not include an adapter. If no report is in hand, say so and stop. Never invent usage numbers; never add a routine whose only job is watching usage.
 
 ## Data to pull
 1. From the platform usage report, read usage grouped by bot and routine (current week). If shares look empty right after reset, use the last 7 days window the same way.
 2. For each candidate routine, read its saved prompt and schedule/trigger (get before edit).
 3. Sample recent outputs only when needed to judge sameness — keep reads small.
+4. For Check E, compare each bot's routine share with its interactive (not-from-a-routine) share, and note whether the owner regularly chats in that same seat.
 
 ## Check A — almost unchanged, still polled daily
 **Tripwire (all must hold):**
@@ -65,6 +67,24 @@ Audit scheduled and subscription routines for waste. Prefer proactive routines, 
 - Keep “summarize and file” jobs only on the filtered subset
 
 **Tradeoff:** might miss edge events outside the filter—widen only with evidence.
+
+## Check E — routines live on a bot the owner chats with
+Every routine run rereads that bot's conversation. A bot that both chats through the day and hosts recurring routines pays the chat history again on each scheduled or event wake.
+
+**Tripwire (all hold):**
+- The bot has one or more scheduled or event routines that ran in this period
+- The same bot also has material interactive chat this period (a clear not-from-a-routine share, or an ongoing conversation beyond routine output)
+- That conversation is not just a thin routine-only inbox
+
+**Do not trip for:** a dedicated, mostly-silent routine runner the owner rarely chats with; a one-off test routine; a single rare job whose chat share is noise-only, where creating another seat would cost more than it saves.
+
+**Actions (propose, wait for yes):**
+- Move recurring routines to a separate, mostly-silent bot (fresh conversation; copy only the skills and rules those routines need)
+- Keep the original seat for chatting
+- Do not create another chatting copy of the same specialist — this split isolates routines from chat history, and is not a second owner of the same workstream
+- Walk through the move; change nothing until the owner says yes
+
+**Tradeoff:** one extra seat to manage. The owner gives up seeing routine output in the same thread they chat in.
 
 ## How to report
 - Use only names and figures from the usage report
