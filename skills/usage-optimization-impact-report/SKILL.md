@@ -33,7 +33,7 @@ Reuse one durable ledger. Do not start a parallel log per chat.
 
 ## After each accepted optimization
 1. Append the ledger row.
-2. Take one usage snapshot through the platform's supported usage tools. On Grok Bot, load usage-review and read the platform usage report; record source, retrieval time, period, timezone, units and denominators. Convert displayed times to the owner's timezone and label it. Other platforms need their own supported adapter; do not claim one exists without testing it.
+2. Take one usage snapshot through the platform's supported usage tools. On Grok Bot, load usage-review and read the platform usage report; record source, retrieval time, period, timezone, units and denominators. Convert displayed times to the owner's timezone and label it. On OpenBot, load `usage-adapter-openbot` and use its verified surface; keep the desktop page's local host analytics separate from organization API figures. Other platforms need their own supported adapter; do not claim one exists without testing it.
 3. Create or update the existing impact report page on the host's supported page/report surface. On Grok Bot, load canvas and reuse the same page for later entries. If no real ledger row and no real snapshot exist yet, do not create an empty page.
 4. Do not install polling, a watcher routine, or a new seat just to refresh the report.
 

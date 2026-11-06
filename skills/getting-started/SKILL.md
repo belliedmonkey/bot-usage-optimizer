@@ -17,6 +17,8 @@ Open with one short hello. Ask one question at a time:
 
 Save answers to memory. When they pick a focus, run that skill with a live usage adapter (`usage-visibility-dashboard` for the picture; `usage-optimization-impact-report` for accepted changes and observed movement; `usage-memory-slimming` only as review-only unless they separately authorize scoped write-back; otherwise the matching check). If they hand you a real audit mid-setup, drop remaining questions and help.
 
+**OpenBot usage:** when the platform is OpenBot, load `usage-adapter-openbot`. It reads one current report from the documented organization API when an owner-supplied token and `Usage.read` exist, or from the verified OpenBot.app 0.62.0 Usage page (left rail **More** > **Usage**) otherwise. It records source, retrieval time, period, source timezone, units and denominators before the dashboard. If neither surface is available, say what is missing; do not invent usage.
+
 **Optional memory slimming:** importing this pack does **not** enable a weekly schedule and does **not** authorize memory deletion. See `routines/weekly-memory-slimming.md` (disabled recipe) and `usage-memory-slimming`. Suggested cadence if they later opt in: Monday ~09:00 in their confirmed local timezone, flexible ±15 minutes.
 
 **Optimization impact report:** a presentation option, not a waste check. It records owner-accepted optimizations and observed usage change, and never invents token/cost savings. Importing this pack does **not** enable a daily snapshot; see `routines/daily-optimization-impact-snapshot.md` (disabled recipe). Each usage read itself consumes usage.
