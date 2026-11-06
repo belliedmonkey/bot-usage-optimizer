@@ -1,8 +1,8 @@
 ---
 name: usage-script-vs-chat-check
 description: >-
-  Use when auditing chat/cloud-bot turns spent repeatedly doing a workflow that
-  a small script (plus a thin skill) would finish with far fewer tokens.
+  Use when auditing repeated chat workflows that belong in scripts, or
+  unnecessarily heavy tools when a supported lighter method can do the same job.
 ---
 # Usage script vs chat check
 
@@ -46,6 +46,18 @@ Numbers come only from a platform usage report supplied by an adapter. This chec
 - Premium seat writes the issue/brief + success checks; harness/open seat runs the script work; premium seat accepts
 
 **Tradeoff:** one handoff; keep console-only pieces on the premium seat.
+
+## Check D — unnecessarily heavy execution tool
+**Tripwire:** a sampled workflow uses repeated visual computer interaction or another heavy execution path even though an available, supported lighter method can perform the same authorized task with adequate correctness and verification.
+
+**Actions (propose, wait for yes):**
+- Prefer a supported connector/native tool, then an authorized plain script/API/CLI, then authorized browser scripting, then visual computer interaction; choose the lightest method that actually meets the task's needs and environment rules.
+- Use existing harness/open-seat routing for local script work. Record why escalation was necessary; measure comparable runs before claiming savings.
+- Never bypass connector authentication/failure, service blocks, approval requirements or mandated browser/desktop delegation by using scripts, copied sessions, internal APIs or undocumented endpoints. A broken sanctioned method is a blocker, not permission for a side door.
+
+**Do not trip for:** interactive console work, inaccessible page state, first exploration, or a lighter tool that lacks the required permissions, verification or supported route.
+
+**Tradeoff:** scripts need maintenance; visual interaction may remain the correct choice for some steps. No universal savings percentage is implied.
 
 ## Report shape
 Lead with PASS/FAIL per check that had enough evidence. At most one action per check. Say what they give up. Change nothing until the owner says yes.
